@@ -12,13 +12,17 @@
         <div class="dashhead mt-4">
             <div class="dashhead-titles">
                 <h6 class="dashhead-subtitle">Counter</h6>
-                <h2 class="dashhead-title" id="counter">Overview</h2>
+                 <h2 class="dashhead-title" id="counter">Overview</h2>
+                <h2 class="dashhead-title" id="myName">...</h2>
             </div>
         </div>
     </div>
     <script>
     const counter = document.getElementById('counter');
     writeCounter = str => counter.textContent = str;
+
+    const myName = document.getElementById('myName');
+    writeName = str => myName.textContent = str;
 
     async function getSensors() {
         let pathname = location.pathname;
@@ -27,6 +31,8 @@
         console.log(partname)
         const myJson = await response.json();
         writeCounter(myJson.counter);
+        writeName(myJson.name);
+
     }
 
     getSensors();
